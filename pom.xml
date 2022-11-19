@@ -49,6 +49,16 @@
         <version>2.9.2</version>
       </dependency>
       <dependency>
+        <artifactId>eclipse-collections-api</artifactId>
+        <groupId>org.eclipse.collections</groupId>
+        <version>11.1.0</version>
+      </dependency>
+      <dependency>
+        <artifactId>eclipse-collections</artifactId>
+        <groupId>org.eclipse.collections</groupId>
+        <version>11.1.0</version>
+      </dependency>
+      <dependency>
         <artifactId>junit-bom</artifactId>
         <groupId>org.junit</groupId>
         <scope>import</scope>
