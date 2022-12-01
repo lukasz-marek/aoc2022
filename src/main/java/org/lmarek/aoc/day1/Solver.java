@@ -6,6 +6,9 @@ public class Solver {
     var service = new InventoryService(inventories);
     service
         .findWithMaxCalories()
-        .ifPresent(inventory -> System.out.println(inventory.totalCalories()));
+        .ifPresent(inventory -> System.out.println("Part 1 " + inventory.totalCalories()));
+    var sumOfCalories =
+        service.findTopCalories(3).stream().mapToLong(Inventory::totalCalories).sum();
+    System.out.println("Part 2: " + sumOfCalories);
   }
 }

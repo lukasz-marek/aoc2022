@@ -14,4 +14,11 @@ class InventoryService {
   public Optional<Inventory> findWithMaxCalories() {
     return inventories.stream().max(Comparator.comparing(Inventory::totalCalories));
   }
+
+  public List<Inventory> findTopCalories(int limit) {
+    return inventories.stream()
+        .sorted(Comparator.comparing(Inventory::totalCalories).reversed())
+        .limit(limit)
+        .toList();
+  }
 }
