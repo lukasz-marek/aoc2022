@@ -7,7 +7,7 @@ import java.util.Optional;
 class InventoryService {
   private final List<Inventory> inventories;
 
-  InventoryService(List<Inventory> inventories) {
+  InventoryService(List<? extends Inventory> inventories) {
     this.inventories = List.copyOf(inventories);
   }
 
