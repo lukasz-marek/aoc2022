@@ -22,11 +22,12 @@ class InventoryTest {
   @Test
   void returnsSumOfCalories() {
     // given
-    var items = List.of(ImmutableFoodItem.builder().calories(100L).build(),
-        ImmutableFoodItem.builder().calories(50L).build(),
-        ImmutableFoodItem.builder().calories(1L).build()
+    var items =
+        List.of(
+            ImmutableFoodItem.builder().calories(100L).build(),
+            ImmutableFoodItem.builder().calories(50L).build(),
+            ImmutableFoodItem.builder().calories(1L).build());
 
-    );
     var inventory = ImmutableInventory.builder().items(items).build();
 
     // when
