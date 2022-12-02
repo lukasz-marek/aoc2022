@@ -18,12 +18,27 @@ public final class InputLoader {
           "C", Shape.SCISSORS,
           "Z", Shape.SCISSORS);
 
+  private static final Map<String, ExpectedEnd> EXPECTATION_CONVERSIONS =
+      Map.of(
+          "X", ExpectedEnd.LOSE,
+          "Y", ExpectedEnd.DRAW,
+          "Z", ExpectedEnd.WIN);
+
   private InputLoader() {}
 
   public static GameRecord load() {
     try {
       var fileContent = loadFile();
       return parseFile(fileContent);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static CorrectedGameRecord loadCorrected() {
+    try {
+      var fileContent = loadFile();
+      return parseCorrected(fileContent);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
@@ -39,10 +54,26 @@ public final class InputLoader {
     return ImmutableGameRecord.builder().rounds(rounds).build();
   }
 
+  private static CorrectedGameRecord parseCorrected(String data) {
+    var rounds =
+        data.lines()
+            .map(String::trim)
+            .map(line -> line.split(" "))
+            .map(InputLoader::buildCorrectedRound)
+            .toList();
+    return ImmutableCorrectedGameRecord.builder().expectedRounds(rounds).build();
+  }
+
   private static ImmutableRound buildRound(String[] parts) {
     var opponent = CONVERSIONS.get(parts[0]);
     var player = CONVERSIONS.get(parts[1]);
     return ImmutableRound.builder().opponentMove(opponent).playerMove(player).build();
+  }
+
+  private static ImmutableExpectedRound buildCorrectedRound(String[] parts) {
+    var opponent = CONVERSIONS.get(parts[0]);
+    var expected = EXPECTATION_CONVERSIONS.get(parts[1]);
+    return ImmutableExpectedRound.builder().opponentMove(opponent).expectation(expected).build();
   }
 
   private static String loadFile() throws URISyntaxException, IOException {
