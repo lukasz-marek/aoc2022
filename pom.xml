@@ -28,6 +28,11 @@
   </build>
   <dependencies>
     <dependency>
+      <artifactId>commons-collections4</artifactId>
+      <groupId>org.apache.commons</groupId>
+      <version>4.4</version>
+    </dependency>
+    <dependency>
       <artifactId>value</artifactId>
       <groupId>org.immutables</groupId>
       <scope>provided</scope>
