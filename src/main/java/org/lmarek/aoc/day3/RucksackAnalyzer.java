@@ -1,11 +1,15 @@
 package org.lmarek.aoc.day3;
 
+import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Set;
 
 class RucksackAnalyzer {
-  public List<Item> findCommonItemsInCompartments(Rucksack rucksack) {
+  public Set<Item> findCommonItemsInCompartments(Rucksack rucksack) {
+    var firstCompartment = new HashSet<>(rucksack.firstCompartment());
     var secondCompartment = new HashSet<>(rucksack.secondCompartment());
-    return rucksack.firstCompartment().stream().filter(secondCompartment::contains).toList();
+
+    firstCompartment.retainAll(secondCompartment);
+    return Collections.unmodifiableSet(firstCompartment);
   }
 }

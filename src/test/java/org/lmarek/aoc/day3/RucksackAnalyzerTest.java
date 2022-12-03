@@ -28,7 +28,7 @@ class RucksackAnalyzerTest {
     var common = tested.findCommonItemsInCompartments(rucksack);
 
     // then
-    Assertions.assertThat(common).containsExactly(item('a'));
+    Assertions.assertThat(common).containsExactlyInAnyOrder(item('a'));
   }
 
   @Test
@@ -41,7 +41,7 @@ class RucksackAnalyzerTest {
     var common = tested.findCommonItemsInCompartments(rucksack);
 
     // then
-    Assertions.assertThat(common).containsExactly(item('a'), item('b'));
+    Assertions.assertThat(common).containsExactlyInAnyOrder(item('a'), item('b'));
   }
 
   private Item item(char symbol) {
