@@ -11,5 +11,11 @@ public class Solver {
                         || assignment.second().fullyContains(assignment.first()))
             .count();
     System.out.println("Part 1 " + numberOfFullyContained);
+
+    var numberOfOverlapping =
+        input.stream()
+            .filter(assignment -> assignment.first().overlaps(assignment.second()))
+            .count();
+    System.out.println("Part 2 " + numberOfOverlapping);
   }
 }

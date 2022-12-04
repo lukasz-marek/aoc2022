@@ -12,4 +12,9 @@ record Range(int startInclusive, int endInclusive) {
     return this.startInclusive <= another.startInclusive
         && this.endInclusive >= another.endInclusive;
   }
+
+  boolean overlaps(Range another) {
+    return this.startInclusive <= another.endInclusive
+        && another.startInclusive <= this.endInclusive;
+  }
 }
