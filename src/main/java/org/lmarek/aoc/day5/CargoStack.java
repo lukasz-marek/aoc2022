@@ -11,6 +11,10 @@ class CargoStack {
     crates.addAll(initialState);
   }
 
+  public Crate topElement() {
+    return crates.peek();
+  }
+
   public void push(Crate crate) {
     crates.push(crate);
   }

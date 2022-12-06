@@ -11,7 +11,11 @@ class Ship {
   }
 
   public void moveCrate(int from, int to) {
-    var moved = stacks.get(from).pop();
-    stacks.get(to).push(moved);
+    var moved = stacks.get(from - 1).pop();
+    stacks.get(to - 1).push(moved);
+  }
+
+  public List<CargoStack> getStacks() {
+    return stacks;
   }
 }
