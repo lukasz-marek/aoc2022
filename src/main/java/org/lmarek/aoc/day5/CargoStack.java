@@ -1,12 +1,13 @@
 package org.lmarek.aoc.day5;
 
 import java.util.ArrayDeque;
+import java.util.Collection;
 import java.util.Deque;
 
 class CargoStack {
   private final Deque<Crate> crates = new ArrayDeque<>();
 
-  public CargoStack(Deque<Crate> initialState) {
+  public CargoStack(Collection<Crate> initialState) {
     crates.addAll(initialState);
   }
 
